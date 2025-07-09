@@ -17,10 +17,19 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Push changes
+    - name: Commit & Push changes
       run: |
+        # ① author 정보 설정
         git config --global user.name 'hansoljin'
         git config --global user.email 'jinhansol@users.noreply.github.com'
+    
+        # ② 변경된 velog-posts 폴더 스테이징
+        git add velog-posts
+    
+        # ③ 커밋 생성 (변경 없으면 에러 무시)
+        git commit -m "chore: auto-update posts" || echo "No changes to commit"
+    
+        # ④ 푸시
         git push https://${{ secrets.GH_PAT }}@github.com/jinhansol/velog.git
 
     - name: Set up Python
