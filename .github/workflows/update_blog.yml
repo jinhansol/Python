@@ -17,6 +17,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    - name: Run update script
+      run: python scripts/update_blog.py
+
     - name: Commit & Push changes
       run: |
         # ① author 정보 설정
