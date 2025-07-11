@@ -23,7 +23,7 @@ jobs:
     - name: Commit & Push changes
       run: |
         # ① author 정보 설정
-        git config --global user.name 'jinhansol'
+        git config --global user.name 'hansoljin'
         git config --global user.email 'jinhansol@users.noreply.github.com'
     
         # ② 변경된 velog-posts 폴더 스테이징
