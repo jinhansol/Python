@@ -24,7 +24,7 @@ jobs:
       run: |
         # ① author 정보 설정
         git config --global user.name 'hansoljin'
-        git config --global user.email 'jinhan9657@users.noreply.github.com'
+        git config --global user.email 'jinhan9657@naver.com'
     
         # ② 변경된 velog-posts 폴더 스테이징
         git add velog-posts
