@@ -43,6 +43,3 @@ jobs:
     - name: Install dependencies
       run: |
         pip install feedparser gitpython
-
-    - name: Run script
-      run: python scripts/update_blog.py
