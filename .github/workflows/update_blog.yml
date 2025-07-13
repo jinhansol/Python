@@ -1,27 +1,37 @@
+name: Update Blog Posts
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'    # 매일 오전 9시 (UTC)
+    - cron: '0 15 * * *'   # 매일 자정 (UTC 기준)
+
 jobs:
   update_blog:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-    - name: Install dependencies
-      run: |
-        pip install feedparser gitpython
+      - name: Install dependencies
+        run: |
+          pip install feedparser gitpython
 
-    - name: Run update script
-      run: python scripts/update_blog.py
+      - name: Run update script
+        run: python scripts/update_blog.py
 
-    - name: Commit & Push changes
-      run: |
-        git config --global user.name 'hansoljin'
-        git config --global user.email 'jinhan9657@naver.com'
-        git add velog-posts
-        git commit -m "chore: auto-update posts" || echo "No changes to commit"
-        git push https://${{ secrets.GH_PAT }}@github.com/jinhansol/velog.git
+      - name: Commit & Push changes
+        run: |
+          git config --global user.name 'hansoljin'
+          git config --global user.email 'jinhan9657@naver.com'
+          git add velog-posts
+          git commit -m "chore: auto-update posts" || echo "No changes to commit"
+          git push https://${{ secrets.GH_PAT }}@github.com/jinhansol/velog.git
